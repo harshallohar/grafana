@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: my-grafana-container
+    restart: always
+    ports:
+      - "3000:3000"
+    volumes:
+      - /home/ubuntu/grafana/config:/etc/grafana
+      - /home/ubunutu/grafana/data:/var/lib/grafana
+      - /home/ubuntu/grafana/provisioning:/etc/grafana/provisioning
