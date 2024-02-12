@@ -1,13 +1,12 @@
 # Use the official Grafana base image
-FROM grafana/grafana
+FROM grafana/grafana:latest
 
-# Copy Grafana configuration files and provisioning files
-COPY ./config /etc/grafana
-COPY ./data /var/lib/grafana
-COPY ./provisioning /etc/grafana/provisioning
+# Copy the configuration file
+COPY ./custom.ini /etc/grafana/grafana.ini
 
 # Expose Grafana port
 EXPOSE 3000
 
-# Set Grafana data directory as a volume
-VOLUME ["/var/lib/grafana"]
+# Start Grafana server
+CMD ["grafana-server", "--config=/etc/grafana/grafana.ini"]
+
