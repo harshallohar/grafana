@@ -1,13 +1,11 @@
-version: '3.8'
-
+version: '3'
 services:
   grafana:
-    image: grafana/grafana
-    container_name: my-grafana-container
-    restart: always
+    image: grafana/grafana:latest
+    container_name: grafana
     ports:
       - "3000:3000"
     volumes:
-      - /home/ubuntu/grafana/config:/etc/grafana
-      - /home/ubunutu/grafana/data:/var/lib/grafana
-      - /home/ubuntu/grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana_data:/var/lib/grafana
+      - ./custom.ini:/etc/grafana/grafana.ini
+    restart: unless-stopped
